@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.Pane?>
+
+<Pane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="565.0" prefWidth="400.0" styleClass="root" stylesheets="@dark_theme.css" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.calculator.calculator.Controller">
+    <children>
+        <TextField fx:id="entry" alignment="CENTER_RIGHT" layoutX="22.0" layoutY="53.0" prefHeight="66.0" prefWidth="355.0" styleClass="highlighted" />
+        <Button fx:id="percentage" layoutX="23.0" layoutY="130.0" mnemonicParsing="false" onAction="#percentage" prefHeight="60.0" prefWidth="60.0" styleClass="highlighted" text="\%" />
+        <Button layoutX="169.0" layoutY="130.0" mnemonicParsing="false" onAction="#cancelEntry" prefHeight="60.0" prefWidth="60.0" styleClass="highlighted" text="CE" />
+        <Button layoutX="316.0" layoutY="130.0" mnemonicParsing="false" onAction="#backspace" prefHeight="60.0" prefWidth="60.0" styleClass="highlighted" text="&lt;" />
+        <Button layoutX="242.0" layoutY="130.0" mnemonicParsing="false" onAction="#cancel" prefHeight="60.0" prefWidth="60.0" styleClass="highlighted" text="C" />
+        <Button layoutX="244.0" layoutY="487.0" mnemonicParsing="false" onAction="#changeTheme" prefHeight="60.0" prefWidth="60.0" styleClass="highlighted" text="T" />
+        <Button layoutX="24.0" layoutY="202.0" mnemonicParsing="false" onAction="#pow" prefHeight="60.0" prefWidth="60.0" styleClass="highlighted" text="pow" />
+        <Button layoutX="170.0" layoutY="202.0" mnemonicParsing="false" onAction="#pi" prefHeight="60.0" prefWidth="60.0" styleClass="highlighted" text="π" />
+        <Button fx:id="divide" layoutX="316.0" layoutY="202.0" mnemonicParsing="false" onAction="#divide" prefHeight="60.0" prefWidth="60.0" styleClass="highlighted" text="/" />
+        <Button layoutX="243.0" layoutY="202.0" mnemonicParsing="false" onAction="#e" prefHeight="60.0" prefWidth="60.0" styleClass="highlighted" text="e" />
+        <Button layoutX="97.0" layoutY="202.0" mnemonicParsing="false" onAction="#sqrt" prefHeight="60.0" prefWidth="60.0" styleClass="highlighted" text="sqrt" />
+        <Button fx:id="seven" layoutX="24.0" layoutY="273.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="60.0" styleClass="highlighted" text="7" />
+        <Button fx:id="nine" layoutX="170.0" layoutY="273.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="60.0" styleClass="highlighted" text="9" />
+        <Button fx:id="multiply" layoutX="316.0" layoutY="273.0" mnemonicParsing="false" onAction="#multiply" prefHeight="60.0" prefWidth="60.0" styleClass="highlighted" text="x" />
+        <Button layoutX="243.0" layoutY="273.0" mnemonicParsing="false" onAction="#sin" prefHeight="60.0" prefWidth="60.0" styleClass="highlighted" text="sin" />
+        <Button fx:id="eight" layoutX="97.0" layoutY="273.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="60.0" styleClass="highlighted" text="8" />
+        <Button fx:id="four" layoutX="24.0" layoutY="344.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="60.0" styleClass="highlighted" text="4" />
+        <Button fx:id="six" layoutX="170.0" layoutY="344.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="60.0" styleClass="highlighted" text="6" />
+        <Button fx:id="subtract" layoutX="317.0" layoutY="344.0" mnemonicParsing="false" onAction="#subtract" prefHeight="60.0" prefWidth="60.0" styleClass="highlighted" text="-" />
+        <Button layoutX="243.0" layoutY="344.0" mnemonicParsing="false" onAction="#asin" prefHeight="60.0" prefWidth="60.0" styleClass="highlighted" text="asin" />
+        <Button fx:id="five" layoutX="97.0" layoutY="344.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="60.0" styleClass="highlighted" text="5" />
+        <Button fx:id="one" layoutX="25.0" layoutY="416.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="60.0" styleClass="highlighted" text="1" />
+        <Button fx:id="three" layoutX="171.0" layoutY="416.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="60.0" styleClass="highlighted" text="3" />
+        <Button fx:id="sum" layoutX="317.0" layoutY="416.0" mnemonicParsing="false" onAction="#sum" prefHeight="60.0" prefWidth="60.0" styleClass="highlighted" text="+" />
+        <Button layoutX="244.0" layoutY="416.0" mnemonicParsing="false" onAction="#cos" prefHeight="60.0" prefWidth="60.0" styleClass="highlighted" text="cos" />
+        <Button fx:id="two" layoutX="98.0" layoutY="416.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="60.0" styleClass="highlighted" text="2" />
+        <Button layoutX="25.0" layoutY="487.0" mnemonicParsing="false" onAction="#changeSign" prefHeight="60.0" prefWidth="60.0" styleClass="highlighted" text="+|-" />
+        <Button fx:id="dot" layoutX="171.0" layoutY="487.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="60.0" styleClass="highlighted" text="." />
+        <Button fx:id="equal" layoutX="317.0" layoutY="487.0" mnemonicParsing="false" onAction="#equal" prefHeight="60.0" prefWidth="60.0" styleClass="highlighted" text="=" />
+        <Button fx:id="radOrDeg" layoutX="98.0" layoutY="130.0" mnemonicParsing="false" onAction="#radOrDeg" prefHeight="60.0" prefWidth="60.0" styleClass="highlighted" text="RAD" />
+        <Button fx:id="zero" layoutX="98.0" layoutY="487.0" mnemonicParsing="false" prefHeight="60.0" prefWidth="60.0" styleClass="highlighted" text="0" />
+        <Pane layoutX="22.0" prefHeight="39.0" prefWidth="355.0" styleClass="title-bar" />
+    </children>
+</Pane>
