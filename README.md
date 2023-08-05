@@ -15,7 +15,7 @@ This repo contains an IntelliJ IDEA project.
 - Square Root (sqrt).
 - Percentage (%).
 - Trigonometric functions (sine, arc sine and cosine)
-### Other
-- Theme (T): switches between dark and light theme.
 - RAD or DEG: switches between RADIANTS and DEGREES u.m.
 - Change Sign: changes the sign (+ or -) of the displayed number.
+### Other
+- Theme (T): switches between dark and light theme.
