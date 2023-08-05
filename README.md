@@ -6,7 +6,6 @@ This repo contains an IntelliJ IDEA project.
 
 ## Known issues:
 - Some low-precision results are caused by using double primitive type. <br>
-  A possible fix can be introducing BigDecimal instead of Double.
 
 ## Features
 ### Math
