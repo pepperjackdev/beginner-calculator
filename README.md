@@ -14,6 +14,7 @@ This repo contains an IntelliJ IDEA project.
 - Power (pow).
 - Square Root (sqrt).
 - Percentage (%).
+- Trigonometric functions (sine, arc sine and cosine)
 ### Other
 - Theme (T): switches between dark and light theme.
 - RAD or DEG: switches between RADIANTS and DEGREES u.m.
