@@ -10,12 +10,21 @@ This repo contains an IntelliJ IDEA project.
 
 ## Features
 ### Math
-- Basic operations (sum, subtraction, multiplication, division).
-- Power (pow).
-- Square Root (sqrt).
-- Percentage (%).
-- Trigonometric functions (sine, arc sine and cosine)
-- RAD or DEG: switches between RADIANTS and DEGREES u.m.
-- Change Sign: changes the sign (+ or -) of the displayed number.
+- Basic Operations:
+  - Sum
+  - Subtraction
+  - Multiplication
+  - Division
+- Percentage
+- Power
+- Square root
+- Trigonometric functions:
+  - Sine
+  - Arc sine
+  - Cosine
+- Sign change
 ### Other
-- Theme (T): switches between dark and light theme.
+- Theme change
+
+## Installation
+Currently, the only way to "install" and use this calculator is to open this project on a local machine using an IDE (such as IntelliJ IDEA, which with this project was created). From an IDE it is possible to run or export as executable jar this project.
