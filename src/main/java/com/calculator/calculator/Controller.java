@@ -5,11 +5,10 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 
-import java.math.BigDecimal;
-import java.math.MathContext;
 import java.util.List;
 import java.util.Objects;
 import java.util.function.BinaryOperator;
+import java.util.function.Supplier;
 import java.util.function.UnaryOperator;
 import java.util.regex.Pattern;
 
@@ -17,9 +16,8 @@ public class Controller {
 
     private static final String ENTRY_TEXT_REGEX = "(?:[1-9][0-9]*|0)(?:[.][0-9]*)?";
     private Pattern pattern;
-    private CalculatorEntryManager<BigDecimal> calcEntryMan;
+    private CalculatorEntryManager<Double> calcEntryMan;
     private boolean ghost = false;
-    private final MathContext mc = new MathContext(32);
     private final String DARK_THEME_CSS = Objects.requireNonNull(getClass().getResource("dark_theme.css")).toExternalForm();
     private final String LIGHT_THEME_CSS = Objects.requireNonNull(getClass().getResource("light_theme.css")).toExternalForm();
     private String anglesUnit;
@@ -80,17 +78,17 @@ public class Controller {
         entry.setText(text);
     }
 
-    private void setEntryText(BigDecimal bg) {
-        setEntryText(bg.toString());
+    private void setEntryText(double num) {
+        setEntryText(String.valueOf(num));
     }
 
-    private void setGhostEntryText(BigDecimal bg) {
-        setEntryText(bg);
+    private void setGhostEntryText(double num) {
+        setEntryText(num);
         ghost = true;
     }
 
-    private BigDecimal getEntryAsBigDecimal() {
-        return new BigDecimal(getEntryText());
+    private double getEntryAsDouble() {
+        return Double.parseDouble(getEntryText());
     }
 
     private void appendTextToEntry(String character) {
@@ -145,18 +143,18 @@ public class Controller {
         }
     }
 
-    private void appendOperation(BinaryOperator<BigDecimal> bo) {
+    private void appendOperation(BinaryOperator<Double> num) {
 
         if (!getEntryText().isEmpty()) {
             if (calcEntryMan.retrieve() != null) {
-                if (ghost && calcEntryMan.retrieve().getValue().equals(getEntryAsBigDecimal())) {
-                    calcEntryMan.retrieve().setOperator(bo);
+                if (ghost && calcEntryMan.retrieve().getValue() == getEntryAsDouble()) {
+                    calcEntryMan.retrieve().setOperator(num);
                     return;
                 }
             }
 
             try {
-                calcEntryMan.add(new Operation<>(getEntryAsBigDecimal(), bo));
+                calcEntryMan.add(new Operation<>(getEntryAsDouble(), num));
                 setGhostEntryText(calcEntryMan.retrieve().getValue());
 
             } catch (ArithmeticException e) {
@@ -169,14 +167,17 @@ public class Controller {
 
     }
 
-    private void executeTransformation(UnaryOperator<BigDecimal> uo) {
+    private void executeTransformation(UnaryOperator<Double> uo) {
         if (!getEntryText().isEmpty()) {
-            setGhostEntryText(uo.apply(getEntryAsBigDecimal()));
+            setGhostEntryText(uo.apply(getEntryAsDouble()));
         }
-
     }
 
-    private double anglesOperations(double num, UnaryOperator<Double> uo) {
+    private void executeTransformation(Supplier<Double> sup) {
+        setGhostEntryText(sup.get());
+    }
+
+    private double fromAngleUnit(double num, UnaryOperator<Double> uo) {
         if (anglesUnit.equals("DEG")) {
             return uo.apply(Math.toRadians(num));
         } else {
@@ -184,58 +185,64 @@ public class Controller {
         }
     }
 
+    private double toAngleUnit(double num, UnaryOperator<Double> uo) {
+        if (anglesUnit.equals("DEG")) {
+            return Math.toDegrees(uo.apply(num));
+        } else {
+            return uo.apply(num);
+        }
+    }
+
     @FXML private void sum() {
-        appendOperation((a, b) -> a.add(b, mc));
+        appendOperation(Double::sum);
     }
 
     @FXML private void subtract() {
-        appendOperation((a, b) -> a.subtract(b, mc));
+        appendOperation((a, b) -> a - b);
     }
 
     @FXML private void multiply() {
-        appendOperation((a, b) -> a.multiply(b, mc));
+        appendOperation((a, b) -> a * b);
     }
 
     @FXML private void divide() {
-        appendOperation((a, b) -> a.divide(b, mc));
+        appendOperation((a, b) -> a / b);
     }
 
     @FXML private void changeSign() {
-        executeTransformation(b -> b.negate(mc));
+        executeTransformation(b -> -b);
     }
 
     @FXML private void pow() {
-        appendOperation((a, b) -> a.pow(b.intValue()));
+        appendOperation(Math::pow);
     }
 
     @FXML private void sqrt() {
-        executeTransformation(b -> b.sqrt(mc));
+        executeTransformation(Math::sqrt);
     }
 
     @FXML private void pi() {
-        entry.clear();
-        setGhostEntryText(BigDecimal.valueOf(Math.PI));
+        executeTransformation(() -> Math.PI);
     }
 
     @FXML private void e() {
-        entry.clear();
-        setGhostEntryText(BigDecimal.valueOf(Math.E));
+        executeTransformation(() -> Math.E);
     }
 
     @FXML private void percentage() {
-        appendOperation((a, b) -> a.multiply(b, mc).divide(BigDecimal.valueOf(100), mc));
+        appendOperation((a, b) -> a * b / 100);
     }
 
     @FXML private void sin() {
-        executeTransformation(b -> BigDecimal.valueOf(anglesOperations(b.doubleValue(), Math::sin)));
+        executeTransformation(b -> fromAngleUnit(b, Math::sin));
     }
 
     @FXML private void asin() {
-        executeTransformation(b -> BigDecimal.valueOf(Math.toDegrees(Math.asin(b.doubleValue()))));
+        executeTransformation(b -> toAngleUnit(b, Math::asin));
     }
 
     @FXML private void cos() {
-        executeTransformation(b -> BigDecimal.valueOf(anglesOperations(b.doubleValue(), Math::cos)));
+        executeTransformation(b -> fromAngleUnit(b, Math::cos));
     }
 
     @FXML private void radOrDeg() {
