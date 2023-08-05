@@ -7,3 +7,14 @@ This repo contains an IntelliJ IDEA project.
 ## Known issues:
 - Some low-precision results are caused by using double primitive type. <br>
   A possible fix can be introducing BigDecimal instead of Double.
+
+## Features
+### Math
+- Basic operations (sum, subtraction, multiplication, division).
+- Power (pow).
+- Square Root (sqrt).
+- Percentage (%).
+### Other
+- Theme (T): switches between dark and light theme.
+- RAD or DEG: switches between RADIANTS and DEGREES u.m.
+- Change Sign: changes the sign (+ or -) of the displayed number.
