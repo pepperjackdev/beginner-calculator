@@ -26,4 +26,4 @@ This repo contains an IntelliJ IDEA project.
 - Theme change
 
 ## Installation
-Currently, the only way to "install" and use this calculator is to open this project on a local machine using an IDE (such as IntelliJ IDEA, which with this project was created). From an IDE it is possible to run or export as executable jar this project.
+Currently, the only way to "install" and use this calculator is to open this project on a local machine using an IDE (such as IntelliJ IDEA, which this project was created with). Once you have opened the project from an IDE you can run or export as an executable jar this project.
